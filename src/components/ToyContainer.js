@@ -1,9 +1,24 @@
 import React from "react";
 import ToyCard from "./ToyCard";
 
-function ToyContainer() {
+function ToyContainer({ toysToDisplay, onToyDelete, onLike }) {
+  
   return (
-    <div id="toy-collection">{/* Render the collection of ToyCards */}</div>
+    <div id="toy-collection">
+      {toysToDisplay.map(toyToDisplay => {
+        return (
+          <ToyCard 
+          onLike={onLike}
+          onToyDelete={onToyDelete} 
+          key={toyToDisplay.name} 
+          name={toyToDisplay.name} 
+          likes={toyToDisplay.likes} 
+          image={toyToDisplay.image} 
+          alt={toyToDisplay.name} 
+          id={toyToDisplay.id}/>
+        )
+      })}
+    </div>
   );
 }
 
